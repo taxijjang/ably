@@ -13,18 +13,22 @@ class User(AbstractBaseUser, BaseTimestampModel):
     name = models.CharField(
         max_length=10,
     )
-    is_active = models.BooleanField(
-        default=True,
+    nickname = models.CharField(
+        max_length=10,
     )
     phone_number = models.CharField(
         max_length=11,
         null=True,
         blank=True,
     )
+    is_active = models.BooleanField(
+        default=True,
+    )
+
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["name", "password"]
+    REQUIRED_FIELDS = ["name", "nickname", "password"]
 
     def __str__(self):
-        return self.name
+        return self.nickname

@@ -2,7 +2,7 @@ reated by https://www.toptal.com/developers/gitignore/api/django,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=django,pycharm
 
 ### Secret ###
-secrets.py
+project_secrets.py
 
 ### Django ###
 *.log

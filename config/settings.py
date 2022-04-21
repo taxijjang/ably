@@ -1,5 +1,5 @@
 from pathlib import Path
-from secrets import SECRET_KEY
+from project_secrets import SECRET_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -13,7 +13,7 @@ SECRET_KEY = SECRET_KEY.get("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 DJANGO_APP = [
@@ -27,6 +27,7 @@ DJANGO_APP = [
 
 THIRD_PARTY_APP = [
     "rest_framework",
+    "drf_spectacular",
 ]
 
 LOCAL_APP = [
@@ -126,5 +127,14 @@ AUTH_USER_MODEL = "user.User"
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+    ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
+
+# drf-spectacular
+SPECTACULAR_SETTINGS = {
+    "TITLE": "택윤 에이블리 사전 과제 API DOC",
+    "DESCRIPTION": "에이블리 사전과제 하며 생성한 API 문서입니다.",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
 }

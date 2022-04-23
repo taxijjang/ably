@@ -10,7 +10,7 @@ from ..serializers import SignUpSerializer
 User = get_user_model()
 
 
-class SignInCreateView(generics.CreateAPIView):
+class SignUpView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = SignUpSerializer
     permission_classes = [AllowAny]

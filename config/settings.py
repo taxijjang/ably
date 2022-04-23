@@ -27,6 +27,7 @@ DJANGO_APP = [
 
 THIRD_PARTY_APP = [
     "rest_framework",
+    "rest_framework_simplejwt",
     "drf_spectacular",
 ]
 
@@ -141,4 +142,8 @@ SPECTACULAR_SETTINGS = {
     "DESCRIPTION": "에이블리 사전과제 하며 생성한 API 문서입니다.",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
+}
+
+SIMPLE_JWT = {
+    "USER_ID_FIELD": "email",
 }

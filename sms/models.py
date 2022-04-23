@@ -21,7 +21,7 @@ class AuthSMS(BaseTimestampModel):
     @classmethod
     def is_valid_sms_auth(cls, phone_number, type):
         queryset = cls.objects.filter(phone_number=phone_number, type=type)
-        queryset = queryset.filter(verify__isnull=True)
+        queryset = queryset.filter(verify__isnull=False)
         queryset = queryset.filter(
             verify__gte=timezone.now() - timezone.timedelta(minutes=cls.VERIFY_TIME)
         )

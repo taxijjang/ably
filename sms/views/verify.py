@@ -1,15 +1,21 @@
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
 
 from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiExample
 from ..serializers import SMSVerifySerializer
 
 
 class SMSVerifyView(APIView):
+    permission_classes = [AllowAny]
+
     @extend_schema(
         summary="SMS를 인증하는 API",
-        description="SMS를 인증하는 API",
+        description="""SMS를 인증하는 API
+               
+        - sms 인증 유효기간은 발송 후 5분입니다.
+        """,
         request=SMSVerifySerializer,
         responses={
             200: OpenApiResponse(

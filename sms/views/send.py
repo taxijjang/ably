@@ -1,15 +1,21 @@
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from rest_framework.permissions import AllowAny
 from drf_spectacular.utils import extend_schema, OpenApiResponse, OpenApiExample
 from ..serializers import SMSSendSerializer
 
 
 class SMSSendView(APIView):
+    permission_classes = [AllowAny]
+
     @extend_schema(
         summary="SMS을 발송하는 API",
-        description="SMS을 발송하는 API",
+        description="""SMS을 발송하는 API
+        
+        - sms 발송 할때 어떤 이유로 발송하는지 작성해야합니다.
+            ex) sign_up, password_reset, ...
+        """,
         request=SMSSendSerializer,
         responses={
             201: OpenApiResponse(

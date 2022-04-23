@@ -1,18 +1,25 @@
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
 
 from drf_spectacular.utils import extend_schema
 
 from ..serializers import UserProfileDetailUpdateSerializer
+from ..permissions import IsAuthor
+
+User = get_user_model()
 
 
 class UserProfileDetailUpdateView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthor]
     http_method_names = ["get", "patch"]
 
     def get_object(self):
-        return self.request.user
+        user = get_object_or_404(User, pk=self.request.user.pk)
+        self.check_object_permissions(self.request, user)
+        return user
 
     @extend_schema(
         tags=["유저"],

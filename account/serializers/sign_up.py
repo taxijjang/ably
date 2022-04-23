@@ -35,12 +35,11 @@ class SignUpSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         password = attrs.get("password")
-        verify_password = attrs.get("verify_password")
+        verify_password = attrs.pop("verify_password")
         if password != verify_password:
             raise PasswordIsNotValidException()
         return attrs
 
     def create(self, validated_data):
-        _ = validated_data.pop("verify_password")
         user = User.objects.create_user(**validated_data)
         return user

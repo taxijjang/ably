@@ -10,7 +10,7 @@ class User(AbstractBaseUser, BaseTimestampModel):
         max_length=255,
         unique=True,
     )
-    name = models.CharField(
+    name = models.EmailField(
         max_length=10,
     )
     nickname = models.CharField(

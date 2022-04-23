@@ -11,9 +11,9 @@ User = get_user_model()
 
 
 class SignUpView(generics.CreateAPIView):
+    permission_classes = [AllowAny]
     queryset = User.objects.all()
     serializer_class = SignUpSerializer
-    permission_classes = [AllowAny]
 
     @extend_schema(
         tags=["계정"],

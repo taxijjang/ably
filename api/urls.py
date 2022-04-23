@@ -6,17 +6,13 @@ from drf_spectacular.views import (
     SpectacularSwaggerView,
 )
 
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-
 app_name = "api"
 
 urlpatterns = [
-    # jwt token
-    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    # 회원가입
-    path("account/", include("account.urls")),
+    # SMS 인증
     path("sms/", include("sms.urls")),
+    # 회원가입
+    path("accounts/", include("account.urls")),
 ]
 
 if settings.DEBUG:

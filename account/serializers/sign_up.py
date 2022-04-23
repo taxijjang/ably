@@ -17,7 +17,9 @@ class SignUpSerializer(serializers.ModelSerializer):
         }
 
     def validate_phone_number(self, phone_number):
-        if not AuthSMS.is_valid_sms_auth(phone_number):
+        if not AuthSMS.is_valid_sms_auth(
+            phone_number=phone_number, type=AuthSMS.SIGN_UP
+        ):
             raise SMSAuthIsExpiredException()
         return phone_number
 

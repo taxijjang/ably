@@ -18,6 +18,7 @@ class User(AbstractBaseUser, BaseTimestampModel):
     )
     phone_number = models.CharField(
         max_length=11,
+        unique=True,
         null=True,
         blank=True,
     )

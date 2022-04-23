@@ -14,6 +14,8 @@ urlpatterns = [
     # jwt token
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    # 회원가입
+    path("account/", include("account.urls")),
     path("sms/", include("sms.urls")),
 ]
 

@@ -33,6 +33,7 @@ THIRD_PARTY_APP = [
 LOCAL_APP = [
     "core",
     "api",
+    "account",
     "user",
     "sms",
 ]
@@ -125,6 +126,9 @@ AUTH_USER_MODEL = "user.User"
 
 # django rest framework
 REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),

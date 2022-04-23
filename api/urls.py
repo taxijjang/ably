@@ -13,6 +13,8 @@ urlpatterns = [
     path("sms/", include("sms.urls")),
     # 회원가입
     path("accounts/", include("account.urls")),
+    # user
+    path("users/", include("user.urls")),
 ]
 
 if settings.DEBUG:

@@ -28,16 +28,6 @@ class SMSSendView(APIView):
                     )
                 ],
             ),
-            400: OpenApiResponse(
-                response=dict,
-                description="SMS 발송 실패",
-                examples=[
-                    OpenApiExample(
-                        "실패",
-                        value={"message": "발송 실패입니다."},
-                    )
-                ],
-            ),
         },
     )
     def post(self, request):

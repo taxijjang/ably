@@ -29,17 +29,6 @@ class SMSVerifyView(APIView):
                     )
                 ],
             ),
-            400: OpenApiResponse(
-                response=dict,
-                description="SMS 인증 실패",
-                examples=[
-                    OpenApiExample(
-                        response_only=True,
-                        name="실패",
-                        value={"인증 실패했습니다."},
-                    ),
-                ],
-            ),
         },
     )
     def post(self, request):

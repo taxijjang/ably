@@ -15,10 +15,10 @@ class AccountSingUpTestCase(APITestCase):
     def setUp(self) -> None:
         pass
 
-    def test_유저_회원가입_성공(self):
+    def test_유저_회원가입_성공(self, password="test_password"):
         유저정보 = {
             "email": "gw9122@naver.com",
-            "password": "test_password",
+            "password": password,
             "verify_password": "test_password",
             "name": "test_name",
             "nickname": "nickname",
@@ -46,6 +46,7 @@ class AccountSingUpTestCase(APITestCase):
                 "phone_number": 유저정보.get("phone_number"),
             },
         )
+        return user
 
     def test_비밀번호_검증실패로_회원가입_실패(self):
         유저정보 = {

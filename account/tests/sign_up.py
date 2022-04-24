@@ -95,7 +95,7 @@ class AccountSingUpTestCase(APITestCase):
 
         # 유효시간 지나도록 시간 추가
         auth_sms = AuthSMS.objects.first()
-        auth_sms.verify += timezone.timedelta(minutes=5)
+        auth_sms.verify -= timezone.timedelta(minutes=5)
         auth_sms.save()
 
         client = APIClient()

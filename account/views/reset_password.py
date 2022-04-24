@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 
 from rest_framework import status
 from rest_framework.views import APIView
@@ -14,6 +15,15 @@ User = get_user_model()
 
 class PasswordResetCreateView(APIView):
     permission_classes = [AllowAny]
+    http_method_names = ["patch"]
+
+    def get_object(self):
+        user = get_object_or_404(
+            User,
+            email=self.request.data.get("email"),
+            phone_number=self.request.data.get("phone_number"),
+        )
+        return user
 
     @extend_schema(
         tags=["계정"],
@@ -45,9 +55,11 @@ class PasswordResetCreateView(APIView):
             ),
         },
     )
-    def post(self, request):
-        serializer = ResetPasswordSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
+    def patch(self, request):
+        serializer = ResetPasswordSerializer(
+            instance=self.get_object(), data=request.data, partial=True
+        )
+        if serializer.is_valid():
             serializer.save()
             return Response(data={"message": "비밀번호 재 설정 완료."})
         return Response(

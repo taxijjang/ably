@@ -39,12 +39,8 @@ class ResetPasswordSerializer(serializers.ModelSerializer):
             raise PasswordIsNotValidException()
         return attrs
 
-    def create(self, validated_data):
-        email = validated_data.get("email")
-        phone_number = validated_data.get("phone_number")
+    def update(self, instance, validated_data):
         password = validated_data.get("password")
-
-        user = User.objects.get(email=email, phone_number=phone_number)
-        user.password = password
-        user.save()
-        return user
+        instance.password = password
+        instance.save()
+        return instance

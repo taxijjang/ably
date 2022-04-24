@@ -80,9 +80,13 @@ python3.7 기준
 ### API 문서 ( 주소 - {baseurl}/api/swagger )
 
 - 작성한 API에 대한 문서를 작성하여 클라이언트 개발자가 문서를 보고 개발을 진행할 수 있도록함
+<img width="1469" alt="image" src="https://user-images.githubusercontent.com/29100894/164987226-80580ceb-bd18-43a2-9043-59fe39faf501.png">
+
 
 ### Testcode 작성
 
 - 기능 구현된 로직에 대하여 testcode를 작성하여 코드의 안정성을 더함
 - coverage를 이용하여 testcode의 범위를 측정
 - 네이버 sns를 이용하여 실제 문자메시지 발송을 구현했는데, Mock을 이용하여 testcode 실행시 실제로 문자가 발송되지 않도록 구현
+<img width="862" alt="image" src="https://user-images.githubusercontent.com/29100894/164987264-aeedab0a-4cbe-4eb4-861a-ece013bfb1d1.png">
+

@@ -10,11 +10,11 @@ app_name = "api"
 
 urlpatterns = [
     # SMS 인증
-    path("sms/", include("sms.urls")),
+    path("sms/", include("sms.urls", namespace="sms")),
     # 회원가입
-    path("accounts/", include("account.urls")),
+    path("accounts/", include("account.urls", namespace="account")),
     # user
-    path("users/", include("user.urls")),
+    path("users/", include("user.urls", namespace="user")),
 ]
 
 if settings.DEBUG:

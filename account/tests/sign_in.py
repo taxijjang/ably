@@ -11,16 +11,18 @@ User = get_user_model()
 
 class AccountSingInTestCase(APITestCase):
     def setUp(self) -> None:
-        pass
+        self.user = User.objects.create_user(
+            email="gw9122@naver.com",
+            password="test_password",
+            name="test",
+            nickname="test",
+            phone_number="01063110710",
+        )
 
-    def test_유저_로그인_성공(self):
-        test_password = "test_password"
-        user = AccountSingUpTestCase().test_유저_회원가입_성공(password=test_password)
-
+    def test_기존_유저_로그인_성공(self, email="gw9122@naver.com", password="test_password"):
         client = APIClient()
         response = client.post(
-            reverse("api:account:sign_in"),
-            data={"email": user.email, "password": test_password},
+            reverse("api:account:sign_in"), data={"email": email, "password": password}
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -35,11 +37,10 @@ class AccountSingInTestCase(APITestCase):
     def test_유저_정보가_올바르지_않아_로그인_실패(self):
         test_password = "test_password"
         fail_test_password = test_password + "test"
-        user = AccountSingUpTestCase().test_유저_회원가입_성공(password=test_password)
 
         client = APIClient()
         response = client.post(
             reverse("api:account:sign_in"),
-            data={"email": user.email, "password": fail_test_password},
+            data={"email": self.user.email, "password": fail_test_password},
         )
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)

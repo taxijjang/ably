@@ -30,7 +30,9 @@ class ResetPasswordTestCase(APITestCase):
             "password": "12345",
             "verify_password": "12345",
         }
-        SMSVerifyTestCase().test_비밀번호_재설정_문자_메시지_인증_성공(비밀번호재설정데이터.get("phone_number"))
+        SMSVerifyTestCase().test_비밀번호_재설정_문자_메시지_인증_성공(
+            phone_number=비밀번호재설정데이터.get("phone_number")
+        )
 
         client = APIClient()
         response = client.patch(reverse("api:account:reset_password"), data=비밀번호재설정데이터)

@@ -61,7 +61,7 @@ class PasswordResetCreateView(APIView):
         )
         if serializer.is_valid():
             serializer.save()
-            return Response(data={"message": "비밀번호 재 설정 완료."})
+            return Response(data={"message": "비밀번호 재설정 완료."})
         return Response(
-            data={"message": "비밀번호 재 설정 실패"}, status=status.HTTP_400_BAD_REQUEST
+            data={"message": "비밀번호 재설정 실패"}, status=status.HTTP_400_BAD_REQUEST
         )

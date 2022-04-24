@@ -40,9 +40,9 @@ class SMSVerifyTestCase(APITestCase):
         auth_sms.refresh_from_db()
         self.assertIsNotNone(auth_sms.verify)
 
-    def test_회원가입_문자_메시지_인증_번호_일치하지않아_실패(self, phone_number="01063110710"):
+    def test_회원가입_문자_메시지_인증_번호_일치하지않아_실패(self):
         회원가입전정보 = {
-            "phone_number": phone_number,
+            "phone_number": "01063110710",
             "type": AuthSMS.SIGN_UP,
         }
         client = APIClient()
@@ -60,9 +60,9 @@ class SMSVerifyTestCase(APITestCase):
         auth_sms.refresh_from_db()
         self.assertIsNone(auth_sms.verify)
 
-    def test_회원가입_문자_메시지_인증_번호_길이가_일치하지않아_실패(self, phone_number="01063110710"):
+    def test_회원가입_문자_메시지_인증_번호_길이가_일치하지않아_실패(self):
         회원가입전정보 = {
-            "phone_number": phone_number,
+            "phone_number": "01063110710",
             "type": AuthSMS.SIGN_UP,
         }
         client = APIClient()
@@ -100,9 +100,9 @@ class SMSVerifyTestCase(APITestCase):
         auth_sms.refresh_from_db()
         self.assertIsNotNone(auth_sms.verify)
 
-    def test_비밀번호_재설정_문자_메시지_인증_번호_일치하지않아_실패(self, phone_number="01063110710"):
+    def test_비밀번호_재설정_문자_메시지_인증_번호_일치하지않아_실패(self):
         비밀번호재설정정보 = {
-            "phone_number": phone_number,
+            "phone_number": "01063110710",
             "type": AuthSMS.RESET_PASSWORD,
         }
         client = APIClient()
@@ -120,9 +120,9 @@ class SMSVerifyTestCase(APITestCase):
         auth_sms.refresh_from_db()
         self.assertIsNone(auth_sms.verify)
 
-    def test_비밀번호_재설정_문자_메시지_인증_번호_길이가_일치하지않아_실패(self, phone_number="01063110710"):
+    def test_비밀번호_재설정_문자_메시지_인증_번호_길이가_일치하지않아_실패(self):
         비밀번호재설정정보 = {
-            "phone_number": phone_number,
+            "phone_number": "01063110710",
             "type": AuthSMS.RESET_PASSWORD,
         }
         client = APIClient()

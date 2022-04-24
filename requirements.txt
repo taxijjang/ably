@@ -5,3 +5,4 @@ coverage==6.3.2
 pre-commit==2.18.1
 djangorestframework-simplejw==5.1.0
 requests==2.27.1
+coverage==6.3.2

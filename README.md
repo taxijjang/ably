@@ -37,12 +37,17 @@ python3.7 기준
 
 ### 2. DB 초기화
 
-1. python [manage.py](http://manage.py) makemigrations
-2. python [manage.py](http://manage.py) migrate
+1. python manage.py makemigrations
+2. python manage.py migrate
 
 ### 3. 프로젝트 실행
 
-1. python [manage.py](http://manage.py) runserver
+1. python manage.py runserver
+
+### 4. 테스트코드 실행
+1. coverage run manage.py test
+2. coverage report
+3. coverage html
 
 ## 사용기술
 
